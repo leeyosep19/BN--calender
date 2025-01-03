@@ -20,9 +20,12 @@ app.use(core());             // core 함수는 상위에  밑에있을경우 에
 app.use("/api", indexRouter);
 
 
-mongoose.connect('mongodb://localhost:27017/mydatabase')
-  .then(() => console.log('Connected to MongoDB!'))
-  .catch(err => console.error('MongoDB connection error:', err));
+
+const mongoURI = process.env.MONGODB_URI_PROD;
+mongoose
+.connect(mongoURI,{useNewUrlparser:true})
+.then(()=>console.log("mongoose connescted"))
+.catch((error)=>console.log("DB connection fail"));
 
 
 app.listen(process.env.PORT || 5000, () => {    
