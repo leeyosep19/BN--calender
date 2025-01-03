@@ -1,3 +1,31 @@
+// const mongoose = require("mongoose");
+
+// const Schema = mongoose.Schema
+
+// const taskSchema = Schema({
+//     task:{
+//         type: String,
+//         required: true //꼭필요하다는 함수
+//     },
+
+//     isComplete:{
+//         type: Boolean,    //참과거짓 을 의미하는 데이터 타입
+//         required: true
+//     },
+//     date: {
+//         type: Date,    // 날짜 필드 추가
+//         required: true,
+//     },
+
+// },
+// {timestamps:true}   //  시간을 알려주는 라이브러리
+// );
+
+
+// const Task = mongoose.model("Task",taskSchema);
+
+// module.exports = Task;
+
 
 const mongoose = require("mongoose");
 

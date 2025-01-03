@@ -20,12 +20,11 @@ app.use(core());             // core 함수는 상위에  밑에있을경우 에
 app.use("/api", indexRouter);
 
 
+const MONGODB_URI_PROD = process.env.MONGODB_URI_PROD
 
-const mongoURI = process.env.MONGODB_URI_PROD;
-mongoose
-.connect(mongoURI,{useNewUrlparser:true})
-.then(()=>console.log("mongoose connescted"))
-.catch((error)=>console.log("DB connection fail"));
+mongoose.connect(MONGODB_URI_PROD)
+  .then(() => console.log('Connected to MongoDB!'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 
 app.listen(process.env.PORT || 5000, () => {    
@@ -34,37 +33,5 @@ app.listen(process.env.PORT || 5000, () => {
 
 
 
-// const mongoURI = `mongodb://localhost:27017`;   //몽고db 기본주소
-
-
-// mongoose
-// .connect(mongoURI,{useNewUrlParser:true}) // 몽고 URI연결해달라는 코드
-// .then(()=>{
-//     console.log("mongoose connected");
-// })
-
-// .catch((err)=>{ 
-//     console.log("DB connection fail",err);
-// });
-
-
-
-
-
-// 모든 리소스에대해서 cors를 허가했지만 만약에 내가 특정 도메인만 허락하고싶다 하면 이렇게 코드를 짜면 된다
-
-// const express = require('express')
-// const cors = require('cors') 
-// const app = express() 
-// const whitelist = ['http://example1.com', 'http://example2.com'] 
-// const corsOptions = {  
-//       origin: function (origin, callback) {
-//             if (whitelist.indexOf(origin) !== -1) {      
-//                 callback(null, true)
-//             } else {
-//                 callback(new Error('Not allowed by CORS'))
-//              }
-//       } }
-// app.use(cors(corsOptions))
 
 
